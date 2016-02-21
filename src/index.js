@@ -131,7 +131,7 @@ mMZ25: MI(),
 mMZ26: MI(),
 
 fib: function fib(x,k) {
-  let j: k;
+  let j = k;
 
   while (j > 0) {
     x: [x[1], x[0] + x[1]];
@@ -141,7 +141,7 @@ fib: function fib(x,k) {
 },
 
 toNums: function toNums(x) {
-  let y: x.map(x => parseFloat(x));
+  let y = x.map(x => parseFloat(x));
   return ret(y);
 },
 
@@ -164,7 +164,7 @@ calc: function calc(a,op,b) {
 },
 
 pause: function(x,t,mon2) {
-  let time: t*1000;
+  let time = t*1000;
   setTimeout( function() {
     mon2.release();
   },time );
@@ -198,9 +198,9 @@ push: function push(x, j) {
 },
 
 push: function push(x,v) {
-  let ar: x;
+  let ar = x;
   ar.push(v);
-  let cleanX: ar.filter(v => (v !== "" && v !== undefined));
+  let cleanX = ar.filter(v => (v !== "" && v !== undefined));
   return ret(cleanX);
 },
 splice: function splice(x, j, k) {
@@ -236,7 +236,7 @@ reduce: function reduce(x, y) {
 },
 
 pop: function pop(x) {
-  let v: x[x.length - 1];
+  let v = x[x.length - 1];
   console.log('In pop. v: ',v);
   return ret(v);
 },
@@ -273,7 +273,7 @@ mult: function mult(x, y) {
 
 log: function log(x,message) {
   console.log(message);
-  let mon: new Monad(x);
+  let mon = new Monad(x);
   return mon;
 },
 
