@@ -281,6 +281,6 @@ delay: function delay(x, mon) {
   return new Promise(function (resolve, reject) {
     setTimeout(resolve, 2000);
   });
-},
-
+}
+}
 
