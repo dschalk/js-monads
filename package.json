@@ -1,0 +1,19 @@
+{
+  "name": "js-monads",
+  "version": "0.1.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dschalk/js-monads.git"
+  },
+  "author": "David Schalk <davidschalk42@gmail.com> (https://github.com/dschalk)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dschalk/js-monads/issues"
+  },
+  "homepage": "https://github.com/dschalk/js-monads#readme"
+}
