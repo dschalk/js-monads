@@ -1,13 +1,23 @@
-
 'use strict';
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
-module.exports = {
 
-Monad: function Monad(z, g) {
-  _classCallCheck(this, Monad);
+var MonadIter = function MonadIter() {
+  var _this = this;
+  this.p = function () {};
 
+  this.release = function () {
+    return _this.p();
+  };
+
+  this.bnd = function (func) {
+    _this.p = func;
+  };
+};
+
+var Monad = function Monad(z, g) {
+  var _this = this;  
   this.x = z;
   if (arguments.length === 1) {
     this.id = 'anonymous';
@@ -26,12 +36,17 @@ Monad: function Monad(z, g) {
   this.ret = function (a) {
     _this.x = a;
     return _this;
-  };
-},
+  }
+}
+
+var ret = function ret(v) {
+  return new Monad(v);
+}
+
+module.exports = {
 
 MonadIter: function MonadIter() {
-  _classCallCheck(this, MonadIter);
-
+  var _this = this;
   this.p = function () {};
 
   this.release = function () {
@@ -43,9 +58,31 @@ MonadIter: function MonadIter() {
   };
 },
 
-ret: function ret(v) {
-  mon: new Monad(v, 'anonymous');
-  return mon;
+Monad: function Monad(z, g) {
+  var _this = this;  
+  this.x = z;
+  if (arguments.length === 1) {
+    this.id = 'anonymous';
+  } else {
+    this.id = g;
+  }
+
+  this.bnd = function (func) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
+    }
+
+    return func.apply(undefined, [_this.x].concat(args));
+  },
+
+  this.ret = function (a) {
+    _this.x = a;
+    return _this;
+  };
+},
+
+ret: function(v) {
+  return new Monad(v);
 },
 
 cube: function(v) {
@@ -61,80 +98,84 @@ addAr: function(a,b) {
 },
 
 M: function M(a,b) {
-  mon: new Monad(a,b);
-  return mon;
+  return new Monad(a,b);
 },
 
 MI: function MI() {
   return new MonadIter();
 },
 
-mM1: this.M([],'mM1'),
-mM2: this.M(0,'mM2'),
-mM3: this.M(0,'mM3'),
-mM4: this.M([],'mM4'),
-mM5: this.M(0,'mM5'),
-mM6: this.M(0,'mM6'),
-mM7: this.M(0,'mM7'),
-mM8: this.M(0,'mM8'),
-mM9: this.M(0,'mM9'),
-mM10: this.M(0,'mM10'),
-mM11: this.M([],'mM11'),
-mM12: this.M(0,'mM12'),
-mM13: this.M(0,'mM13'),
-mM14: this.M(0,'mM14'),
-mM15: this.M(0,'mM15'),
-mM16: this.M(0,'mM16'),
-mM17: this.M(0,'mM17'),
-mM18: this.M(0,'mM18'),
-mM19: this.M(0,'mM19'),
-mMscbd: this.M([],'mMscbd'),
-mMmessages: this.M([],'mMmessages'),
-mMscoreboard: this.M([],'mMscoreboard'),
-mMmsg: this.M([],'mMmsg'),
-mMgoals: this.M(0,'mMgoals'),
-mMgoals2: this.M('','mMgoals2'),
-mMnbrs: this.M([],'mMnbrs'),
-mMnumbers: this.M([],'mMnumbers'),
-mMname: this.M('', 'mMname'),
-mMar: this.M([1,2,3,4,5], 'mMar'),
-mMscores: this.M('', 'mMscores'),
-mMprefix: this.M('', 'mMprefix'),
-mMfib: this.M([0,1], 'mMfib'),
-mMmain: this.M(null, 'mMmain'),
-mMcalc: this.M(null, 'mMcalc'),
+mM1: new Monad([],'mM1'),
+mM2: new Monad(0,'mM2'),
+mM3: new Monad(0,'mM3'),
+mM4: new Monad([],'mM4'),
+mM5: new Monad(0,'mM5'),
+mM6: new Monad(0,'mM6'),
+mM7: new Monad(0,'mM7'),
+mM8: new Monad(0,'mM8'),
+mM9: new Monad(0,'mM9'),
+mM10: new Monad(0,'mM10'),
+mM11: new Monad([],'mM11'),
+mM12: new Monad(0,'mM12'),
+mM13: new Monad(0,'mM13'),
+mM14: new Monad(0,'mM14'),
+mM15: new Monad(0,'mM15'),
+mM16: new Monad(0,'mM16'),
+mM17: new Monad(0,'mM17'),
+mM18: new Monad(0,'mM18'),
+mM19: new Monad(0,'mM19'),
+mMscbd: new Monad([],'mMscbd'),
+mMmessages: new Monad([],'mMmessages'),
+mMscoreboard: new Monad([],'mMscoreboard'),
+mMmsg: new Monad([],'mMmsg'),
+mMgoals: new Monad(0,'mMgoals'),
+mMgoals2: new Monad('','mMgoals2'),
+mMnbrs: new Monad([],'mMnbrs'),
+mMnumbers: new Monad([],'mMnumbers'),
+mMname: new Monad('', 'mMname'),
+mMar: new Monad([1,2,3,4,5], 'mMar'),
+mMscores: new Monad('', 'mMscores'),
+mMprefix: new Monad('', 'mMprefix'),
+mMfib: new Monad([0,1], 'mMfib'),
+mMmain: new Monad(null, 'mMmain'),
+mMcalc: new Monad(null, 'mMcalc'),
 
-mMZ1: this.MI(),
-mMZ2: this.MI(),
-mMZ3: this.MI(),
-mMZ4: this.MI(),
-mMZ5: this.MI(),
-mMZ6: this.MI(),
-mMZ7: this.MI(),
-mMZ8: this.MI(),
-mMZ9: this.MI(),
+mMZ1: new MonadIter(),
+mMZ2: new MonadIter(),
+mMZ3: new MonadIter(),
+mMZ4: new MonadIter(),
+mMZ5: new MonadIter(),
+mMZ6: new MonadIter(),
+mMZ7: new MonadIter(),
+mMZ8: new MonadIter(),
+mMZ9: new MonadIter(),
 
-mMZ10: this.MI(),
-mMZ11: this.MI(),
-mMZ12: this.MI(),
-mMZ13: this.MI(),
-mMZ14: this.MI(),
-mMZ15: this.MI(),
-mMZ16: this.MI(),
+mMZ10: new MonadIter(),
+mMZ11: new MonadIter(),
+mMZ12: new MonadIter(),
+mMZ13: new MonadIter(),
+mMZ14: new MonadIter(),
+mMZ15: new MonadIter(),
+mMZ16: new MonadIter(),
+mMZ17: new MonadIter(),
+mMZ18: new MonadIter(),
+mMZ19: new MonadIter(),
 
-mMZ20: this.MI(),
-mMZ21: this.MI(),
-mMZ22: this.MI(),
-mMZ23: this.MI(),
-mMZ24: this.MI(),
-mMZ25: this.MI(),
-mMZ26: this.MI(),
+mMZ20: new MonadIter(),
+mMZ21: new MonadIter(),
+mMZ22: new MonadIter(),
+mMZ23: new MonadIter(),
+mMZ24: new MonadIter(),
+mMZ25: new MonadIter(),
+mMZ26: new MonadIter(),
+mMZ27: new MonadIter(),
+mMZ28: new MonadIter(),
+mMZ29: new MonadIter(),
 
 fib: function fib(x,k) {
   let j = k;
-
   while (j > 0) {
-    x: [x[1], x[0] + x[1]];
+    x = [x[1], x[0] + x[1]];
     j -= 1;
   }
   return ret('fibonacci ' + k + ': ' + x[0]);
@@ -146,17 +187,17 @@ toNums: function toNums(x) {
 },
 
 calc: function calc(a,op,b) { 
-  result;
+  var result;
   switch (op) {
-      case "add": result: (parseFloat(a) + parseFloat(b));
+      case "add": result = (parseFloat(a) + parseFloat(b));
       break;
-      case "subtract": result: (a - b);
+      case "subtract": result = (a - b);
       break;
-      case "mult": result: (a * b);
+      case "mult": result = (a * b);
       break;
-      case "div": result: (a / b);
+      case "div": result = (a / b);
       break;
-      case "concat": result: (a+""+b)*1.0;
+      case "concat": result = (a+""+b)*1.0;
       break;
       default : 'Major Malfunction in calc.';
   }
