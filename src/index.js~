@@ -1,6 +1,6 @@
 
 
-module.exports: {
+module.exports = {
 
 MonadIter: function MonadIter() {
   _this: this;

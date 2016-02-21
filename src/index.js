@@ -1,38 +1,45 @@
 
+'use strict';
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError('Cannot call a class as a function'); } }
 
 module.exports = {
 
-MonadIter: function MonadIter() {
-  _this: this;
-  this.p: function () {};
-
-  this.release: function () {
-    return _this.p();
-  };
-
-  this.bnd: function (func) {
-    _this.p: func;
-  };
-},
-
 Monad: function Monad(z, g) {
-  _this: this;  
-  this.x: z;
+  _classCallCheck(this, Monad);
+
+  this.x = z;
   if (arguments.length === 1) {
-    this.id: 'anonymous';
+    this.id = 'anonymous';
   } else {
-    this.id: g;
+    this.id = g;
   }
-  this.bnd: function (func) {
-    for (_len: arguments.length, args: Array(_len > 1 ? _len - 1 : 0), _key: 1; _key < _len; _key++) {
-      args[_key - 1]: arguments[_key];
+
+  this.bnd = function (func) {
+    for (var _len = arguments.length, args = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
+      args[_key - 1] = arguments[_key];
     }
+
     return func.apply(undefined, [_this.x].concat(args));
   };
 
-  this.ret: function (a) {
-    _this.x: a;
+  this.ret = function (a) {
+    _this.x = a;
     return _this;
+  };
+},
+
+MonadIter: function MonadIter() {
+  _classCallCheck(this, MonadIter);
+
+  this.p = function () {};
+
+  this.release = function () {
+    return _this.p();
+  };
+
+  this.bnd = function (func) {
+    _this.p = func;
   };
 },
 
