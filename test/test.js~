@@ -1,0 +1,10 @@
+import test from 'ava'
+console.log(test);
+
+test('one plus one is two', t => {
+  t.equal(1 + 1, 2)
+})
+
+test('two plus one is three', t => {
+  t.equal(1 + 2, 3)
+})
