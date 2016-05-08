@@ -1,0 +1,4 @@
+// import {ret, Monad, MonadIter, MonadStream, add, cube, push, equals, shift, splice, map, filter, reduce, unshift, calc} from './monad.js'
+var Monad = require('./monad.js');
+var m = new Monad(12, 'm');
+console.log(m);
