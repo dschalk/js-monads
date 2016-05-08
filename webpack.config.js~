@@ -5,16 +5,18 @@ module.exports = {
       path: "/mnt/B/StackZone/js-monads",
       filename: "monad.bundle.js"
   },
-  loaders: [
-      {
-          test:   /\.js/,
-          loader: 'babel',
-          include: "/mnt/B/StackZone/js-monads",
-      }
-  ],
-  query: {
-    plugins: ['transform-runtime'],
-    presets: ['es2015'],
+  module: {
+    loaders: [
+        {
+            test:   /\.js/,
+            loader: 'babel',
+            include: "/mnt/B/StackZone/js-monads",
+        }
+    ],
+    query: {
+      plugins: ['transform-runtime'],
+      presets: ['es2015'],
+    }
   }
 }
 
