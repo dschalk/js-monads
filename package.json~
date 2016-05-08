@@ -1,22 +1,8 @@
 {
   "name": "js-monads",
-  "version": "2.1.2",
+  "version": "2.1.5",
   "description": "This package contains Monad, MonadIter, MonadStream, and ret. An online demonstration is running at [JS-monads-stable](http://schalk.net:3055) The repository is for the demonstration is at [https://github.com/dschalk/JS-monads-stable](https://github.com/dschalk/JS-monads-stable). The entire JS-monads parts 1 through 5 online series is deprecated, not optimized, and uses older definitions of the monads, but it might be of some use. The demonstrations are available at [http://schalk.net](http://schalk.net).",
-  "main": "dist/main.js",
-  "browserify": { "transform": [ "babelify" ] },
-  "dependencies": {
-    "most": "0.19.2",
-    "most-subject": "3.0.2"
-  },
-  "devDependencies": {
-    "babelify": "6.x",
-    "browserify": "13.0.1"
-  },
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "browserify": "browserify src/index.js -t babelify --outfile dist/main.js",
-    "build": "browserify src/index.js -t [ babelify ] --ingore node_modules --outfile dist/main.js"
-  },
+  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/dschalk/js-monads.git"
