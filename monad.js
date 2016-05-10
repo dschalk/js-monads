@@ -3,9 +3,6 @@
 
 var O = {};
 
-var tempStyle = {display: 'inline'}
-var tempStyle2 = {display: 'none'}
-
 import {subject} from 'most-subject';
 
 var MonadStream = function MonadStream(g) {
@@ -278,5 +275,5 @@ var log = function log(x, message) {
     }
   }
 
-export {ret, Monad, MonadIter, MonadStream, add, cube, push, equals, splice, map, filter, reduce, unshift, calc, spliceAdd, spliceRemove, spliceFront, next, next2, log, getIndex, getIndex2, concat,   };
+export default {O, ret, Monad, MonadIter, MonadStream, add, cube, push, equals, splice, map, filter, reduce, unshift, calc, spliceAdd, spliceRemove, sliceFront, next, next2, log, getIndex, getIndex2, concat,   };
 

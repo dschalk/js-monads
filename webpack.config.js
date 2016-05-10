@@ -1,13 +1,12 @@
 module.exports = {
-  context: "/mnt/B/StackZone/js-monads",
+  context: "/mnt/B/StackZone/js-monads/js-monads",
   entry: {
     main: [
-      'babel-polyfill',
-      './app.js'
+      './monad.js'
     ]
   },
   output: {
-      path: "/mnt/B/StackZone/js-monads",
+      path: "/mnt/B/StackZone/js-monads/js-monads",
       filename: "monad.bundle.js",
   },
   module: {
