@@ -6,14 +6,7 @@ var O = {};
 var tempStyle = {display: 'inline'}
 var tempStyle2 = {display: 'none'}
 
-function _classCallCheck(instance, Constructor) { 
-  if (!(instance instanceof Constructor)) { 
-    throw new TypeError("Cannot call a class as a function"); 
-  } 
-}
-
 import {subject} from 'most-subject';
-// var subject = require('most-subject');
 
 var MonadStream = function MonadStream(g) {
   var _this = this;
@@ -285,5 +278,5 @@ var log = function log(x, message) {
     }
   }
 
-export default {ret, Monad, MonadIter, MonadStream, add, cube, push, equals, splice, map, filter, reduce, unshift, calc};
+export {ret, Monad, MonadIter, MonadStream, add, cube, push, equals, splice, map, filter, reduce, unshift, calc, spliceAdd, spliceRemove, spliceFront, next, next2, log, getIndex, getIndex2, concat,   };
 

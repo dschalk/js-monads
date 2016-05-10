@@ -285,5 +285,5 @@ var log = function log(x, message) {
     }
   }
 
-export default {ret, Monad, MonadIter, MonadStream, add, cube, push, equals, shift, splice, map, filter, reduce, unshift, calc};
+export default {ret, Monad, MonadIter, MonadStream, add, cube, push, equals, splice, map, filter, reduce, unshift, calc};
 
