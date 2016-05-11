@@ -1,13 +1,12 @@
+var path = require('path');
+
 module.exports = {
-  context: "/mnt/B/StackZone/js-monads/js-monads",
   entry: {
-    main: [
-      './monad.js'
-    ]
+    main: './app.js'
   },
   output: {
-      path: "/mnt/B/StackZone/js-monads/js-monads",
-      filename: "monad.bundle.js",
+      path: __dirname,
+      filename: "bundle.js",
   },
   module: {
     loaders: [
@@ -22,9 +21,5 @@ module.exports = {
     }
   }
 }
-
-
-
-
 
 
